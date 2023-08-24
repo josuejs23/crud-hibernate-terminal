@@ -18,7 +18,8 @@ public class CruddemoterminalApplication {
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner ->{
 			// createStudent(studentDAO);
-			createMultipleStudent(studentDAO);
+			// createMultipleStudent(studentDAO);
+			readStudent(studentDAO);
 		};
 	}
 
@@ -36,6 +37,10 @@ public class CruddemoterminalApplication {
 		studentDAO.save(student3);
 		System.out.println("student2 = " + student2);
 		System.out.println("student3 = " + student3);
+	}
+
+	public void readStudent(StudentDAO studentDAO){
+		System.out.println(studentDAO.findById(100).getFirstName());
 	}
 
 }
