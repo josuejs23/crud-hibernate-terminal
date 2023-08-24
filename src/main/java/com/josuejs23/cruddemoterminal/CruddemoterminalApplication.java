@@ -1,5 +1,7 @@
 package com.josuejs23.cruddemoterminal;
 
+import com.josuejs23.cruddemoterminal.dao.StudentDAO;
+import com.josuejs23.cruddemoterminal.entity.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,10 +15,27 @@ public class CruddemoterminalApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(String[] args){
+	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner ->{
-			System.out.println("Runner!!!!!");
+			// createStudent(studentDAO);
+			createMultipleStudent(studentDAO);
 		};
+	}
+
+	private void createStudent(StudentDAO studentDAO){
+
+		Student student = new Student("Josue", "Zorrilla", "josue@mail.com");
+		studentDAO.save(student);
+		System.out.printf("Student %s with id %s was persisted.", student.getFirstName(), student.getId());
+	}
+
+	public void createMultipleStudent(StudentDAO studentDAO){
+		Student student2 = new Student("Lili", "Zorrilla", "lili@mail.com");
+		Student student3 = new Student("Juan", "Zorrilla", "juan@mail.com");
+		studentDAO.save(student2);
+		studentDAO.save(student3);
+		System.out.println("student2 = " + student2);
+		System.out.println("student3 = " + student3);
 	}
 
 }
