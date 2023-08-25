@@ -23,7 +23,8 @@ public class CruddemoterminalApplication {
 			// createMultipleStudent(studentDAO);
 			// readStudent(studentDAO);
 			// getAllStudents(studentDAO);
-			getAllStudentsByFirstName(studentDAO);
+			// getAllStudentsByFirstName(studentDAO);
+			updateStudentName(studentDAO);
 		};
 	}
 
@@ -59,6 +60,13 @@ public class CruddemoterminalApplication {
 		for(Student student : students){
 			System.out.println(student);
 		}
+	}
+
+	public void updateStudentName(StudentDAO studentDAO){
+		Student student = studentDAO.findById(1);
+		student.setFirstName(student.getFirstName() + "!!!");
+		studentDAO.update(student);
+		System.out.println("student updated = " + student);
 	}
 
 }
