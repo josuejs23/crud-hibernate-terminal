@@ -24,7 +24,9 @@ public class CruddemoterminalApplication {
 			// readStudent(studentDAO);
 			// getAllStudents(studentDAO);
 			// getAllStudentsByFirstName(studentDAO);
-			updateStudentName(studentDAO);
+			// updateStudentName(studentDAO);
+			// removeStudent(studentDAO);
+			deleteAllStudent(studentDAO);
 		};
 	}
 
@@ -67,6 +69,21 @@ public class CruddemoterminalApplication {
 		student.setFirstName(student.getFirstName() + "!!!");
 		studentDAO.update(student);
 		System.out.println("student updated = " + student);
+	}
+
+	public void removeStudent(StudentDAO studentDAO){
+		getAllStudents(studentDAO);
+		System.out.println("Removing student with id 1");
+		studentDAO.delete(1);
+		getAllStudents(studentDAO);
+	}
+
+	public void deleteAllStudent(StudentDAO studentDAO){
+		System.out.println("All students before delte");
+		getAllStudents(studentDAO);
+		studentDAO.deleteAll();
+		System.out.println("All students afer delete");
+		getAllStudents(studentDAO);
 	}
 
 }
